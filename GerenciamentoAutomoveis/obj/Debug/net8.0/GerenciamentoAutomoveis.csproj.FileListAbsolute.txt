@@ -121,3 +121,6 @@ C:\Users\felip\OneDrive\Documents\GitHub\Gerenciamento-de-oficinas-de-carro\Gere
 C:\Users\felip\OneDrive\Documents\GitHub\Gerenciamento-de-oficinas-de-carro\GerenciamentoAutomoveis\obj\Debug\net8.0\GerenciamentoAutomoveis.pdb
 C:\Users\felip\OneDrive\Documents\GitHub\Gerenciamento-de-oficinas-de-carro\GerenciamentoAutomoveis\obj\Debug\net8.0\GerenciamentoAutomoveis.genruntimeconfig.cache
 C:\Users\felip\OneDrive\Documents\GitHub\Gerenciamento-de-oficinas-de-carro\GerenciamentoAutomoveis\obj\Debug\net8.0\ref\GerenciamentoAutomoveis.dll
+C:\Users\felip\OneDrive\Documents\GitHub\Gerenciamento-de-oficinas-de-carro\GerenciamentoAutomoveis\bin\Debug\net8.0\my-app\package.json
+C:\Users\felip\OneDrive\Documents\GitHub\Gerenciamento-de-oficinas-de-carro\GerenciamentoAutomoveis\bin\Debug\net8.0\my-app\tsconfig.json
+C:\Users\felip\OneDrive\Documents\GitHub\Gerenciamento-de-oficinas-de-carro\GerenciamentoAutomoveis\bin\Debug\net8.0\package-lock.json
