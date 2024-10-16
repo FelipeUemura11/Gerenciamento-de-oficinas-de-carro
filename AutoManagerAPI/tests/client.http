@@ -1,0 +1,35 @@
+
+### TESTAR A RAIZ
+GET http://localhost:5072
+
+### Criar Cliente
+POST http://localhost:5072/client
+Content-Type: application/json
+
+{
+    "Name": "João Gabriel",
+    "Email": "joaogabriel@up.com",
+    "Phone": "997297809",
+    "Address": "Rua São Cristovão 1850 Casa 03 Curitiba-PR"
+}
+
+### Obter todos os clientes
+GET http://localhost:5072/clients
+
+### Obter um cliente (pelo id)
+### AVISO: LEMBRAR DE INSERIR O ID CORRETO DO USUÁRIO CRIADO PARA O TESTE FUNCIONAR
+GET http://localhost:5072/client/0a4dc350-7d15-4a7a-a9cf-70fdcd0e4633
+
+### Atualizar cliente
+PUT http://localhost:5072/clients/0a4dc350-7d15-4a7a-a9cf-70fdcd0e4633
+Content-Type: application/json
+
+{
+    "Name": "Seu Alberto",
+    "Email": "seualberto@gmail.com",
+    "Phone": "997297809",
+    "Address": "Rua dos Ze dos Coquin"
+}
+
+### Deletar cliente
+DELETE http://localhost:5072/clients/0a4dc350-7d15-4a7a-a9cf-70fdcd0e4633
