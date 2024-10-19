@@ -20,16 +20,5 @@ GET http://localhost:5072/carservices
 ### Obter um serviço
 GET http://localhost:5072/carservice/Troca de Pneu
 
-### Atualizar serviço
-PUT http://localhost:5072/carservices/80e32361-e491-41f6-b8fa-c6ecef3d82d2
-Content-Type: application/json
-
-{
-    "Name": "Troca de Óleo",
-    "Description": "Troca de Óleo Comum",
-    "Price": 250.0,
-    "Category": "Troca"
-}
-
 ### Deletar serviço
 DELETE http://localhost:5072/carservices/80e32361-e491-41f6-b8fa-c6ecef3d82d2

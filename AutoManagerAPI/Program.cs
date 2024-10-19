@@ -28,23 +28,6 @@ app.MapGet("/carservice/{name}", async (string name, AppDbContext context) =>
     return carservice.Any() ? Results.Ok(carservice) : Results.NotFound("Nenhum serviço encontrado.");
 });
 
-// Atualizar serviço
-app.MapPut("/carservices/{id}", async (string id, CarService updatedCarService, AppDbContext context) =>
-{
-    var carservice = await context.CarServices.FindAsync(id);
-    if(carservice == null)
-    {
-        return Results.NotFound("Serviço não encontrado.");
-    }
-
-    carservice.Name = updatedCarService.Name;
-    carservice.Description = updatedCarService.Description;
-    carservice.Price = updatedCarService.Price;
-    carservice.Category = updatedCarService.Category;
-    await context.SaveChangesAsync();
-    return Results.Ok("Produto atualizado com sucesso.");
-});
-
 // Remover serviço
 app.MapDelete("/carservices/{id}", async (string id, AppDbContext context) =>
 {
@@ -77,7 +60,7 @@ app.MapGet("/clients", async (AppDbContext context) =>
 }
 );
 
-// Retorna cliente pelo id
+// Retornar cliente pelo id
 // @nota: utilizado somente para ver detalhes do cliente dentro da página
 app.MapGet("client/{id}", async (string id, AppDbContext context) => 
 {

@@ -5,7 +5,6 @@ public class AppDbContext : DbContext
 {
     // Definindo os DbSets
     public DbSet<Client> Clients { get; set; }
-    public DbSet<User> Users { get; set; }
     public DbSet<Order> Orders { get; set; }
     public DbSet<Car> Cars { get; set; }
     public DbSet<CarService> CarServices { get; set; }

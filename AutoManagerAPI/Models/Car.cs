@@ -8,10 +8,10 @@ public class Car
         Id = Guid.NewGuid().ToString();
     }
     //C# - Atributo com get e set
-    public string? Id { get; set; }
-    public string? Name { get; set; }
-    public string? Plate { get; set; }
+    public string Id { get; set; }
+    public string Name { get; set; }
+    public string Plate { get; set; }
     public string? Color { get; set; }
     public Client Client { get; set; }
-    
+    public List<Order> OrdersHistoric { get; set; }
 }

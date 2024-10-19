@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoManagerAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241014213317_InitialCreate")]
+    [Migration("20241019000400_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -31,9 +31,11 @@ namespace AutoManagerAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Plate")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -53,9 +55,11 @@ namespace AutoManagerAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<double>("Price")
@@ -75,9 +79,11 @@ namespace AutoManagerAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Phone")
@@ -97,17 +103,22 @@ namespace AutoManagerAPI.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("ClientId")
+                    b.Property<string>("CarServiceId")
                         .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ClientId")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("Status")
@@ -120,37 +131,17 @@ namespace AutoManagerAPI.Migrations
 
                     b.HasIndex("CarId");
 
+                    b.HasIndex("CarServiceId");
+
                     b.HasIndex("ClientId");
 
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("AutoManagerAPI.Models.User", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ClientId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Username")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClientId");
-
-                    b.ToTable("Users");
-                });
-
             modelBuilder.Entity("AutoManagerAPI.Models.Car", b =>
                 {
                     b.HasOne("AutoManagerAPI.Models.Client", "Client")
-                        .WithMany()
+                        .WithMany("Cars")
                         .HasForeignKey("ClientId");
 
                     b.Navigation("Client");
@@ -159,31 +150,38 @@ namespace AutoManagerAPI.Migrations
             modelBuilder.Entity("AutoManagerAPI.Models.Order", b =>
                 {
                     b.HasOne("AutoManagerAPI.Models.Car", "Car")
-                        .WithMany()
+                        .WithMany("OrdersHistoric")
                         .HasForeignKey("CarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AutoManagerAPI.Models.Client", "Client")
+                    b.HasOne("AutoManagerAPI.Models.CarService", "CarService")
                         .WithMany()
-                        .HasForeignKey("ClientId")
+                        .HasForeignKey("CarServiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("AutoManagerAPI.Models.Client", "Client")
+                        .WithMany("Orders")
+                        .HasForeignKey("ClientId");
+
                     b.Navigation("Car");
+
+                    b.Navigation("CarService");
 
                     b.Navigation("Client");
                 });
 
-            modelBuilder.Entity("AutoManagerAPI.Models.User", b =>
+            modelBuilder.Entity("AutoManagerAPI.Models.Car", b =>
                 {
-                    b.HasOne("AutoManagerAPI.Models.Client", "Client")
-                        .WithMany()
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("OrdersHistoric");
+                });
 
-                    b.Navigation("Client");
+            modelBuilder.Entity("AutoManagerAPI.Models.Client", b =>
+                {
+                    b.Navigation("Cars");
+
+                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }
