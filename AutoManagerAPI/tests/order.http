@@ -1,0 +1,21 @@
+
+### Cadastrar nova ordem
+POST http://localhost:5072/order
+Content-Type: application/json
+
+{
+    "Name": "Troca de Óleo para Gol 2012",
+    "Description": "Troca de Óleo Comum",
+    "CarServiceId": "7cc04f3d-692d-4df1-b64b-73d291fe060a",
+    "ClientId": "0079e009-9461-4f4e-8136-55af4a2ee409",
+    "CarId": "1cab465c-f0e5-4bab-a903-ec72bc321a5b"
+}
+
+### Obter todas as ordens
+GET http://localhost:5072/orders
+
+### Obter uma ordem
+GET http://localhost:5072/order/78dd8208-17e1-4d82-b238-d136bfca8aed
+
+### Concluir uma ordem
+PUT http://localhost:5072/orders/status/78dd8208-17e1-4d82-b238-d136bfca8aed

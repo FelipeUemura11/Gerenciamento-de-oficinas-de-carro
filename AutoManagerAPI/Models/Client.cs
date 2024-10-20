@@ -1,12 +1,13 @@
 namespace AutoManagerAPI.Models;
+using AutoManagerAPI.dto;
 
 public class Client 
 {
     public Client() 
     {
         Id = Guid.NewGuid().ToString();
-        Orders = new List<Order>();
-        Cars = new List<Car>();
+        Orders = [];
+        Cars = [];
     }
 
     public string Id { get; set; }

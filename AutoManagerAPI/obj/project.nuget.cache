@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AbXfSgB1Meg=",
+  "dgSpecHash": "Wg3IR6wOjew=",
   "success": true,
-  "projectFilePath": "C:\\Estudos\\Faculdade de Ciência da Computação\\4º Semestre\\Desenvolvimento de Software Visual\\Oficina de Carros\\2\\Gerenciamento-de-oficinas-de-carro\\AutoManagerAPI\\AutoManagerAPI.csproj",
+  "projectFilePath": "C:\\MY SPACE\\Faculdade de Ciência da Computação\\4º Semestre\\Desenvolvimento de Software Visual\\Oficina de Carros\\2\\Gerenciamento-de-oficinas-de-carro\\AutoManagerAPI\\AutoManagerAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\icaro\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\icaro\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",

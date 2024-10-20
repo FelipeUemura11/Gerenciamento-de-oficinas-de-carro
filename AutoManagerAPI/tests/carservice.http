@@ -8,9 +8,9 @@ POST http://localhost:5072/carservice
 Content-Type: application/json
 
 {
-    "Name": "Troca de Óleo",
-    "Description": "Troca de Óleo Comum",
-    "Price": 230.0,
+    "Name": "Troca de Pneu",
+    "Description": "Troca de Pneu Comum",
+    "Price": 400.0,
     "Category": "Troca"
 }
 
@@ -18,7 +18,7 @@ Content-Type: application/json
 GET http://localhost:5072/carservices
 
 ### Obter um serviço
-GET http://localhost:5072/carservice/Troca de Pneu
+GET http://localhost:5072/carservice/7cc04f3d-692d-4df1-b64b-73d291fe060a
 
 ### Deletar serviço
-DELETE http://localhost:5072/carservices/80e32361-e491-41f6-b8fa-c6ecef3d82d2
+DELETE http://localhost:5072/carservices/7cc04f3d-692d-4df1-b64b-73d291fe060a

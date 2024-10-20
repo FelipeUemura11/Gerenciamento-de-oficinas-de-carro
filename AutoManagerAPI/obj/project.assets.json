@@ -2386,11 +2386,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Estudos\\Faculdade de Ciência da Computação\\4º Semestre\\Desenvolvimento de Software Visual\\Oficina de Carros\\2\\Gerenciamento-de-oficinas-de-carro\\AutoManagerAPI\\AutoManagerAPI.csproj",
+      "projectUniqueName": "C:\\MY SPACE\\Faculdade de Ciência da Computação\\4º Semestre\\Desenvolvimento de Software Visual\\Oficina de Carros\\2\\Gerenciamento-de-oficinas-de-carro\\AutoManagerAPI\\AutoManagerAPI.csproj",
       "projectName": "AutoManagerAPI",
-      "projectPath": "C:\\Estudos\\Faculdade de Ciência da Computação\\4º Semestre\\Desenvolvimento de Software Visual\\Oficina de Carros\\2\\Gerenciamento-de-oficinas-de-carro\\AutoManagerAPI\\AutoManagerAPI.csproj",
+      "projectPath": "C:\\MY SPACE\\Faculdade de Ciência da Computação\\4º Semestre\\Desenvolvimento de Software Visual\\Oficina de Carros\\2\\Gerenciamento-de-oficinas-de-carro\\AutoManagerAPI\\AutoManagerAPI.csproj",
       "packagesPath": "C:\\Users\\icaro\\.nuget\\packages\\",
-      "outputPath": "C:\\Estudos\\Faculdade de Ciência da Computação\\4º Semestre\\Desenvolvimento de Software Visual\\Oficina de Carros\\2\\Gerenciamento-de-oficinas-de-carro\\AutoManagerAPI\\obj\\",
+      "outputPath": "C:\\MY SPACE\\Faculdade de Ciência da Computação\\4º Semestre\\Desenvolvimento de Software Visual\\Oficina de Carros\\2\\Gerenciamento-de-oficinas-de-carro\\AutoManagerAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\icaro\\AppData\\Roaming\\NuGet\\NuGet.Config"

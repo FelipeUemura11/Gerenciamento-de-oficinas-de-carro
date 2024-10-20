@@ -1,0 +1,25 @@
+
+### TESTAR A RAIZ
+GET http://localhost:5072
+
+### TESTAR A ROTA DE CADASTRO
+POST http://localhost:5072/car
+Content-Type: application/json
+
+{
+    "Brand": "BMW",
+    "Model": "X1",
+    "Year": "2024",
+    "Plate": "SQL-2024",
+    "Color": "Amarelo",
+    "ClientId": "0079e009-9461-4f4e-8136-55af4a2ee409"
+}
+
+### Obter todos os carros
+GET http://localhost:5072/cars
+
+### Obter um carro (pelo id)
+GET http://localhost:5072/car/1cab465c-f0e5-4bab-a903-ec72bc321a5b
+
+### Remove o carro (pelo id)
+DELETE http://localhost:5072/cars/1cab465c-f0e5-4bab-a903-ec72bc321a5b
