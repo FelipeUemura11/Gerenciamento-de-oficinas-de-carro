@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoManagerAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241030202202_RemoveAddressFromClient")]
+    partial class RemoveAddressFromClient
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.10");
@@ -81,26 +84,8 @@ namespace AutoManagerAPI.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Bairro")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Cep")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Cidade")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Cpf")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Estado")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Logradouro")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
@@ -108,10 +93,6 @@ namespace AutoManagerAPI.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Phone")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Senha")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

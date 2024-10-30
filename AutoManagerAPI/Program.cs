@@ -7,7 +7,18 @@ using AutoManagerAPI.dto;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
+app.UseCors("AllowAll");
 
 // MÉTODOS AUXILIARES DE DTO
 ClientDetailDto MapToClientDetailDto(Client client)
@@ -18,7 +29,13 @@ ClientDetailDto MapToClientDetailDto(Client client)
         Name = client.Name,
         Email = client.Email,
         Phone = client.Phone,
-        Address = client.Address,
+        Cpf = client.Cpf,
+        Cep = client.Cep,
+        Estado = client.Estado,
+        Cidade = client.Cidade,
+        Bairro = client.Bairro,
+        Logradouro = client.Logradouro,
+        Senha = client.Senha,
         Cars = client.Cars.Select(car => new CarDto
         {
             Id = car.Id,
@@ -40,6 +57,13 @@ ClientDto MapToClientDto(Client client)
         Name = client.Name,
         Email = client.Email,
         Phone = client.Phone,
+        Cpf = client.Cpf,
+        Cep = client.Cep,
+        Estado = client.Estado,
+        Cidade = client.Cidade,
+        Bairro = client.Bairro,
+        Logradouro = client.Logradouro,
+        Senha = client.Senha,
     };
 }
 
@@ -205,7 +229,6 @@ app.MapPut("/clients/{id}", async (string id, Client updatedClient, AppDbContext
     client.Name = updatedClient.Name;
     client.Email = updatedClient.Email;
     client.Phone = updatedClient.Phone;
-    client.Address = updatedClient.Address;
     await context.SaveChangesAsync();
     return Results.Ok("Cliente atualizado com sucesso.");
 });

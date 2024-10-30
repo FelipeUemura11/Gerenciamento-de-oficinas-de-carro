@@ -4,14 +4,21 @@ GET http://localhost:5072
 
 ### Criar Cliente
 POST http://localhost:5072/client
-Content-Type: application/json
+# Content-Type: application/json
 
-{
-    "Name": "João Gabriel",
-    "Email": "joaogabriel@up.com",
-    "Phone": "997297809",
-    "Address": "Rua São Cristovão 1850 Casa 03 Curitiba-PR"
-}
+# {
+#     "Name": "Felipe",
+#     "Email": "felipe@gmail.com",
+#     "Phone": "5541997297809",
+#     "Cpf": "43051084530",
+#     "Cep": "80035050",
+#     "Estado": "Parana",
+#     "Cidade": "Curitiba",
+#     "Bairro": "Cabral",
+#     "Logradouro": "Rua dos funcionarios",
+#     "Senha": "senha"
+# }
+
 ### Obter todos os clientes
 GET http://localhost:5072/clients
 
@@ -20,14 +27,13 @@ GET http://localhost:5072/clients
 GET http://localhost:5072/client/0079e009-9461-4f4e-8136-55af4a2ee409
 ### Atualizar cliente
 PUT http://localhost:5072/clients/0079e009-9461-4f4e-8136-55af4a2ee409
-Content-Type: application/json
+# Content-Type: application/json
 
-{
-    "Name": "Seu Alberto",
-    "Email": "seualberto@gmail.com",
-    "Phone": "997297809",
-    "Address": "Rua dos Ze dos Coquin"
-}
+# {
+#     "Name": "Seu Alberto",
+#     "Email": "seualberto@gmail.com",
+#     "Phone": "997297809"
+# }
 
 ### Deletar cliente
-DELETE http://localhost:5072/clients/0079e009-9461-4f4e-8136-55af4a2ee409
+DELETE http://localhost:5072/clients/5c478cd2-02e4-4ffb-a2dd-ca2d63311336
