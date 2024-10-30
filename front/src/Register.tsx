@@ -85,7 +85,7 @@ function Register() {
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    name="Name"  // Mudei de "nome" para "Name"
+                    name="Name"
                     placeholder="Nome"
                     value={formData.Name}
                     onChange={handleChange}
@@ -93,7 +93,7 @@ function Register() {
                 />
                 <input
                     type="email"
-                    name="Email"  // Mudei de "email" para "Email"
+                    name="Email"
                     placeholder="Email"
                     value={formData.Email}
                     onChange={handleChange}
@@ -101,7 +101,7 @@ function Register() {
                 />
                 <input
                     type="text"
-                    name="Cpf"  // Mudei de "cpf" para "Cpf"
+                    name="Cpf"
                     placeholder="CPF"
                     value={formData.Cpf}
                     onChange={handleChange}
@@ -109,7 +109,7 @@ function Register() {
                 />
                 <input
                     type="text"
-                    name="Phone"  // Mudei de "phone" para "Phone"
+                    name="Phone"
                     placeholder="Telefone"
                     value={formData.Phone}
                     onChange={handleChange}
@@ -117,7 +117,7 @@ function Register() {
                 />
                 <input
                     type="text"
-                    name="Cep"  // Mudei de "cep" para "Cep"
+                    name="Cep"
                     placeholder="Digite o CEP"
                     value={formData.Cep}
                     onChange={handleChange}
@@ -158,7 +158,7 @@ function Register() {
                 />
                 <input
                     type="password"
-                    name="Senha"  // Mudei de "senha" para "Senha"
+                    name="Senha"
                     placeholder="Senha"
                     value={formData.Senha}
                     onChange={handleChange}
