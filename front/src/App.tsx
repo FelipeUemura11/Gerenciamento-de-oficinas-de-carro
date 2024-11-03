@@ -8,7 +8,7 @@ function App() {
   const toggleForm = () => setIsRegister(!isRegister);
   return (
     <div>
-      <h1> AutoManeger </h1>
+      <h1> Gerenciamento Automoveis - nome </h1>
       <button onClick={toggleForm}>
         {isRegister ? "Já tem uma conta? Fazer Login" : "Não tem conta? Registrar"}
       </button>

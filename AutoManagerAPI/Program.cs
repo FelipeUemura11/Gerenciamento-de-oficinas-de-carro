@@ -19,7 +19,7 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 app.UseCors("AllowAll");
-
+// Metodo HTTP para acesso ao login do usuario
 app.MapPost("/login", async (LoginDto loginDto, AppDbContext context) =>
 {
     var user = await context.Clients.FirstOrDefaultAsync(c => c.Email == loginDto.Email && c.Senha == loginDto.Senha);
@@ -535,5 +535,5 @@ app.MapPut("/orders/status/{id}", async (string id, AppDbContext context) =>
 });
 
 app.Run();
-
+// LoginDto serve como um objeto que carrega os dados do login (email e senha) entre o cliente (frontend) e o servidor.
 public record LoginDto(string Email, string Senha);
