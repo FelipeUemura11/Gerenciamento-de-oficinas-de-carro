@@ -20,6 +20,12 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 app.UseCors("AllowAll");
 
+app.MapPost("/login", async (LoginDto loginDto, AppDbContext context) =>
+{
+    var user = await context.Clients.FirstOrDefaultAsync(c => c.Email == loginDto.Email && c.Senha == loginDto.Senha);
+    return user != null ? Results.Ok("Login realizado com sucesso!") : Results.Unauthorized();
+});
+
 // MÉTODOS AUXILIARES DE DTO
 ClientDetailDto MapToClientDetailDto(Client client)
 {
@@ -529,3 +535,5 @@ app.MapPut("/orders/status/{id}", async (string id, AppDbContext context) =>
 });
 
 app.Run();
+
+public record LoginDto(string Email, string Senha);

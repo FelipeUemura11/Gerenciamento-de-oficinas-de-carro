@@ -403,9 +403,6 @@ C:\Users\felip\OneDrive\Documents\C#\Gerenciamento_Automoveis\Gerenciamento-de-o
 C:\Users\felip\OneDrive\Documents\C#\Gerenciamento_Automoveis\Gerenciamento-de-oficinas-de-carro\AutoManagerAPI\obj\Debug\net8.0\AutoManagerAPI.csproj.CoreCompileInputs.cache
 C:\Users\felip\OneDrive\Documents\C#\Gerenciamento_Automoveis\Gerenciamento-de-oficinas-de-carro\AutoManagerAPI\obj\Debug\net8.0\AutoManagerAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\felip\OneDrive\Documents\C#\Gerenciamento_Automoveis\Gerenciamento-de-oficinas-de-carro\AutoManagerAPI\obj\Debug\net8.0\AutoManagerAPI.sourcelink.json
-C:\Users\felip\OneDrive\Documents\C#\Gerenciamento_Automoveis\Gerenciamento-de-oficinas-de-carro\AutoManagerAPI\obj\Debug\net8.0\AutoManagerAPI.dll
-C:\Users\felip\OneDrive\Documents\C#\Gerenciamento_Automoveis\Gerenciamento-de-oficinas-de-carro\AutoManagerAPI\obj\Debug\net8.0\refint\AutoManagerAPI.dll
-C:\Users\felip\OneDrive\Documents\C#\Gerenciamento_Automoveis\Gerenciamento-de-oficinas-de-carro\AutoManagerAPI\obj\Debug\net8.0\AutoManagerAPI.pdb
 C:\Users\felip\OneDrive\Documents\C#\Gerenciamento_Automoveis\Gerenciamento-de-oficinas-de-carro\AutoManagerAPI\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\felip\OneDrive\Documents\C#\Gerenciamento_Automoveis\Gerenciamento-de-oficinas-de-carro\AutoManagerAPI\bin\Debug\net8.0\appsettings.json
 C:\Users\felip\OneDrive\Documents\C#\Gerenciamento_Automoveis\Gerenciamento-de-oficinas-de-carro\AutoManagerAPI\bin\Debug\net8.0\AutoManagerAPI.exe
@@ -523,5 +520,8 @@ C:\Users\felip\OneDrive\Documents\C#\Gerenciamento_Automoveis\Gerenciamento-de-o
 C:\Users\felip\OneDrive\Documents\C#\Gerenciamento_Automoveis\Gerenciamento-de-oficinas-de-carro\AutoManagerAPI\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\felip\OneDrive\Documents\C#\Gerenciamento_Automoveis\Gerenciamento-de-oficinas-de-carro\AutoManagerAPI\obj\Debug\net8.0\scopedcss\bundle\AutoManagerAPI.styles.css
 C:\Users\felip\OneDrive\Documents\C#\Gerenciamento_Automoveis\Gerenciamento-de-oficinas-de-carro\AutoManagerAPI\obj\Debug\net8.0\AutoMana.BDF3C794.Up2Date
+C:\Users\felip\OneDrive\Documents\C#\Gerenciamento_Automoveis\Gerenciamento-de-oficinas-de-carro\AutoManagerAPI\obj\Debug\net8.0\AutoManagerAPI.dll
+C:\Users\felip\OneDrive\Documents\C#\Gerenciamento_Automoveis\Gerenciamento-de-oficinas-de-carro\AutoManagerAPI\obj\Debug\net8.0\refint\AutoManagerAPI.dll
+C:\Users\felip\OneDrive\Documents\C#\Gerenciamento_Automoveis\Gerenciamento-de-oficinas-de-carro\AutoManagerAPI\obj\Debug\net8.0\AutoManagerAPI.pdb
 C:\Users\felip\OneDrive\Documents\C#\Gerenciamento_Automoveis\Gerenciamento-de-oficinas-de-carro\AutoManagerAPI\obj\Debug\net8.0\AutoManagerAPI.genruntimeconfig.cache
 C:\Users\felip\OneDrive\Documents\C#\Gerenciamento_Automoveis\Gerenciamento-de-oficinas-de-carro\AutoManagerAPI\obj\Debug\net8.0\ref\AutoManagerAPI.dll
