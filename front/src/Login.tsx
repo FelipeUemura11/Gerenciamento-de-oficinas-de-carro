@@ -4,20 +4,19 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-// formato do formulario - login
 interface LoginForm {
   email: string;
   senha: string;
 }
-// indicacao que Login eh um componente React
+
 const Login: React.FC = () => {
-  const [formData, setFormData] = useState<LoginForm>({ email: '', senha: '' }); // recebe um objeto formato LoginForm
-  const [errorMessage, setErrorMessage] = useState<string | null>(null); // caso de login nulo
-  // mudanças nos campos de entrada do formulario.
+  const [formData, setFormData] = useState<LoginForm>({ email: '', senha: '' });
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  // Manipulador de submissao
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
