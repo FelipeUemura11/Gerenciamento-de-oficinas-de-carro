@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import Register from './Register';
-import Login from './Login';
+import Register from './components/pages/Register';
+import Login from './components/pages/Login';
+// import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 
 function App() {
   const [isRegister, setIsRegister] = useState(false);

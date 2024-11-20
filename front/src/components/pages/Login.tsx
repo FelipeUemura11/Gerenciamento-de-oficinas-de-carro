@@ -4,11 +4,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-interface LoginForm {
-  email: string;
-  senha: string;
-}
-
 const Login: React.FC = () => {
   const [formData, setFormData] = useState<LoginForm>({ email: '', senha: '' });
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -24,7 +19,7 @@ const Login: React.FC = () => {
       if (response.status === 200) {
         console.log('Login acessado com sucesso!');
       }
-    } catch (error) {
+    } catch (error) { 
       setErrorMessage('Login Inválido, tente novamente!');
     }
   };
