@@ -100,6 +100,9 @@ namespace AutoManagerAPI.Migrations
                     b.Property<string>("Estado")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Logradouro")
                         .HasColumnType("TEXT");
 

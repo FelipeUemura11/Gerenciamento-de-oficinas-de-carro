@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoManagerAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241030202523_AddCpfCepClient")]
-    partial class AddCpfCepClient
+    [Migration("20241121213715_DatabaseCreation")]
+    partial class DatabaseCreation
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -102,6 +102,9 @@ namespace AutoManagerAPI.Migrations
 
                     b.Property<string>("Estado")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Logradouro")
                         .HasColumnType("TEXT");

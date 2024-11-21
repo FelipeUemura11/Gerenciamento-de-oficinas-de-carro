@@ -34,7 +34,14 @@ namespace AutoManagerAPI.Migrations
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Email = table.Column<string>(type: "TEXT", nullable: false),
                     Phone = table.Column<string>(type: "TEXT", nullable: true),
-                    Address = table.Column<string>(type: "TEXT", nullable: true)
+                    Cpf = table.Column<string>(type: "TEXT", nullable: true),
+                    Cep = table.Column<string>(type: "TEXT", nullable: true),
+                    Estado = table.Column<string>(type: "TEXT", nullable: true),
+                    Cidade = table.Column<string>(type: "TEXT", nullable: true),
+                    Bairro = table.Column<string>(type: "TEXT", nullable: true),
+                    Logradouro = table.Column<string>(type: "TEXT", nullable: true),
+                    Senha = table.Column<string>(type: "TEXT", nullable: false),
+                    IsAdmin = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {

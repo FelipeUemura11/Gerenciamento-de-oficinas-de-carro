@@ -1,11 +1,21 @@
-// axios, biblioteca utilizada para simplificar as requisicoes do HTTP
-// forma de instalacao 'npm install axios' e 'npm install --save-dev @types/axios'
-
+// src/components/pages/Login.tsx
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import LoginForm from '../../models/LoginForm';
 
-const Login: React.FC = () => {
+interface LoginProps {
+  setIsAuthenticated: (isAuthenticated: boolean) => void;
+  setIsAdmin: (isAdmin: boolean) => void;
+  setClientId: (clientId: string) => void;
+}
+
+interface LoginResponse {
+  isAdmin: boolean;
+  clientId: string;
+}
+
+const Login: React.FC<LoginProps> = ({ setIsAuthenticated, setIsAdmin, setClientId }) => {
   const [formData, setFormData] = useState<LoginForm>({ email: '', senha: '' });
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -17,32 +27,33 @@ const Login: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5072/login', formData);
+      const response = await axios.post<LoginResponse>('http://localhost:5072/login', formData);
+      console.log('Response:', response);
       if (response.status === 200) {
-        console.log('Login acessado com sucesso!');
-        navigate('/home');
+        console.log('Login acessado com sucessowwww!');
+        setIsAuthenticated(true);
+        setClientId(response.data.clientId);
+        console.log("CLIENTE ID: ", response.data);
+        if (response.data.isAdmin) {
+          setIsAdmin(true);
+          navigate('/admin');
+        } else {
+          setIsAdmin(false);
+          navigate('/home');
+        }
       }
-    } catch (error) { 
-      setErrorMessage('Login Inválido, tente novamente!');
+    } catch (error) {
+      setErrorMessage('Login falhou. Verifique suas credenciais.');
     }
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email:
-          <input type="email" name="email" value={formData.email} onChange={handleChange} />
-        </label>
-        <label>
-          Senha:
-          <input type="password" name="senha" value={formData.senha} onChange={handleChange} />
-        </label>
-        <button type="submit">Login</button>
-      </form>
-      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-    </div>
+    <form onSubmit={handleSubmit}>
+      <input type="email" name="email" value={formData.email} onChange={handleChange} />
+      <input type="password" name="senha" value={formData.senha} onChange={handleChange} />
+      <button type="submit">Login</button>
+      {errorMessage && <p>{errorMessage}</p>}
+    </form>
   );
 };
 

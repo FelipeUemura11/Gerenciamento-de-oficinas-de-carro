@@ -1,4 +1,3 @@
-
 // pNOTA by @icarogabriel: Este código ainda não está otimizado. Em breve, irei compactar os processos de DTO e mapeamento de entidades.
 
 using AutoManagerAPI.Models;
@@ -23,7 +22,12 @@ app.UseCors("AllowAll");
 app.MapPost("/login", async (LoginDto loginDto, AppDbContext context) =>
 {
     var user = await context.Clients.FirstOrDefaultAsync(c => c.Email == loginDto.Email && c.Senha == loginDto.Senha);
-    return user != null ? Results.Ok("Login realizado com sucesso!") : Results.Unauthorized();
+    if (user != null)
+    {
+        var loginResponse = new LoginResponse(user.IsAdmin, user.Id);
+        return Results.Ok(loginResponse);
+    }
+    return Results.Unauthorized();
 });
 
 // MÉTODOS AUXILIARES DE DTO
@@ -276,6 +280,7 @@ app.MapPost("/car", async (Car car, AppDbContext context) =>
         return Results.NotFound("Cliente não encontrado.");
     }
 
+    car.Id = Guid.NewGuid().ToString();
     client.Cars.Add(car);
     car.Client = client;
 
@@ -326,7 +331,7 @@ app.MapGet("/cars", async (AppDbContext context) =>
     return Results.Ok(carsWithClientDto);
 });
 
-app.MapGet("car/{id}", async (string id, AppDbContext context) => 
+app.MapGet("/car/{id}", async (string id, AppDbContext context) => 
 {
     var car = await context.Cars
         .Include(c => c.Client)
@@ -353,11 +358,12 @@ app.MapGet("car/{id}", async (string id, AppDbContext context) =>
     };
 
     return Results.Ok(carWithClientDto);
-}
-);
+});
 
-app.MapDelete("/cars/{id}", async (string id, AppDbContext context) => 
+app.MapDelete("/car/{id}", async (string id, AppDbContext context) => 
 {
+    var allCars = context.Cars.ToList();
+    context.Cars.RemoveRange(allCars);
     var car = await context.Cars
         .Include(c => c.Client)
         .Include(c => c.OrdersHistoric) // Inclui as ordens históricas do carro
@@ -420,7 +426,7 @@ app.MapPost("/order", async (Order order, AppDbContext context) =>
     var carService = await context.CarServices.FindAsync(carServiceId);
     if (carService == null)
     {
-        return Results.NotFound("Serviço não encontrado.");
+        return Results.NotFound("Serviço n��o encontrado.");
     }
 
     order.Car = car;
@@ -537,3 +543,5 @@ app.MapPut("/orders/status/{id}", async (string id, AppDbContext context) =>
 app.Run();
 // LoginDto serve como um objeto que carrega os dados do login (email e senha) entre o cliente (frontend) e o servidor.
 public record LoginDto(string Email, string Senha);
+
+public record LoginResponse(bool IsAdmin, string ClientId);

@@ -8,6 +8,7 @@ public class Client
         Id = Guid.NewGuid().ToString();
         Orders = [];
         Cars = [];
+        IsAdmin = false;
     }
 
     public string Id { get; set; }
@@ -21,6 +22,7 @@ public class Client
     public string? Bairro { get; set;}
     public string? Logradouro { get; set;}
     public string Senha { get; set;}
+    public bool IsAdmin { get; set;}
     public List<Order> Orders { get; set; }
     public List<Car> Cars { get; set; }
 }

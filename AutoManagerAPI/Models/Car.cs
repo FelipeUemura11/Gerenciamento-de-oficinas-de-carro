@@ -6,7 +6,7 @@ public class Car
     public Car()
     {
         Id = Guid.NewGuid().ToString();
-        OrdersHistoric = [];
+        OrdersHistoric = new List<Order>();
     }
     //C# - Atributo com get e set
     public string Id { get; set; }

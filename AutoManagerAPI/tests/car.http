@@ -12,14 +12,14 @@ Content-Type: application/json
     "Year": "2024",
     "Plate": "SQL-2024",
     "Color": "Amarelo",
-    "ClientId": "0079e009-9461-4f4e-8136-55af4a2ee409"
+    "ClientId": "1f3e2d70-9988-4ddf-b462-7447d938dec2"
 }
 
 ### Obter todos os carros
 GET http://localhost:5072/cars
 
 ### Obter um carro (pelo id)
-GET http://localhost:5072/car/1cab465c-f0e5-4bab-a903-ec72bc321a5b
+GET http://localhost:5072/car/
 
 ### Remove o carro (pelo id)
-DELETE http://localhost:5072/cars/1cab465c-f0e5-4bab-a903-ec72bc321a5b
+DELETE http://localhost:5072/car/6f55d815-f149-4933-bb34-90d8602d63b4
