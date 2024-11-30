@@ -2,13 +2,11 @@ namespace AutoManagerAPI.Models;
 
 public class Car
 {
-    //C# - Contrutor da classe
     public Car()
     {
         Id = Guid.NewGuid().ToString();
         OrdersHistoric = new List<Order>();
     }
-    //C# - Atributo com get e set
     public string Id { get; set; }
     public string Brand { get; set; }
     public string Model { get; set; }

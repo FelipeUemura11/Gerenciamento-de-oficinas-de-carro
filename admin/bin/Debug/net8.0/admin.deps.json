@@ -400,10 +400,7 @@
           "Microsoft.EntityFrameworkCore.Sqlite": "9.0.0"
         },
         "runtime": {
-          "AutoManagerAPI.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "AutoManagerAPI.dll": {}
         }
       }
     }

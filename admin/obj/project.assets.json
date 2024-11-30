@@ -1298,19 +1298,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\icaro\\.nuget\\packages\\": {}
+    "C:\\Users\\felip\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\MY SPACE\\Faculdade de Ciência da Computação\\4º Semestre\\Desenvolvimento de Software Visual\\Oficina de Carros\\OFICIAL 2\\Gerenciamento-de-oficinas-de-carro\\admin\\admin.csproj",
+      "projectUniqueName": "C:\\Users\\felip\\OneDrive\\Documents\\C#\\Gerenciamento-de-oficinas-de-carro\\admin\\admin.csproj",
       "projectName": "admin",
-      "projectPath": "C:\\MY SPACE\\Faculdade de Ciência da Computação\\4º Semestre\\Desenvolvimento de Software Visual\\Oficina de Carros\\OFICIAL 2\\Gerenciamento-de-oficinas-de-carro\\admin\\admin.csproj",
-      "packagesPath": "C:\\Users\\icaro\\.nuget\\packages\\",
-      "outputPath": "C:\\MY SPACE\\Faculdade de Ciência da Computação\\4º Semestre\\Desenvolvimento de Software Visual\\Oficina de Carros\\OFICIAL 2\\Gerenciamento-de-oficinas-de-carro\\admin\\obj\\",
+      "projectPath": "C:\\Users\\felip\\OneDrive\\Documents\\C#\\Gerenciamento-de-oficinas-de-carro\\admin\\admin.csproj",
+      "packagesPath": "C:\\Users\\felip\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\felip\\OneDrive\\Documents\\C#\\Gerenciamento-de-oficinas-de-carro\\admin\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\icaro\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\felip\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -1322,8 +1322,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\MY SPACE\\Faculdade de Ciência da Computação\\4º Semestre\\Desenvolvimento de Software Visual\\Oficina de Carros\\OFICIAL 2\\Gerenciamento-de-oficinas-de-carro\\AutoManagerAPI\\AutoManagerAPI.csproj": {
-              "projectPath": "C:\\MY SPACE\\Faculdade de Ciência da Computação\\4º Semestre\\Desenvolvimento de Software Visual\\Oficina de Carros\\OFICIAL 2\\Gerenciamento-de-oficinas-de-carro\\AutoManagerAPI\\AutoManagerAPI.csproj"
+            "C:\\Users\\felip\\OneDrive\\Documents\\C#\\Gerenciamento-de-oficinas-de-carro\\AutoManagerAPI\\AutoManagerAPI.csproj": {
+              "projectPath": "C:\\Users\\felip\\OneDrive\\Documents\\C#\\Gerenciamento-de-oficinas-de-carro\\AutoManagerAPI\\AutoManagerAPI.csproj"
             }
           }
         }
@@ -1368,7 +1368,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

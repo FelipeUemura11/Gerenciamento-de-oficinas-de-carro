@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\MY SPACE\\Faculdade de Ciência da Computação\\4º Semestre\\Desenvolvimento de Software Visual\\Oficina de Carros\\OFICIAL 2\\Gerenciamento-de-oficinas-de-carro\\AutoManagerAPI\\AutoManagerAPI.csproj": {}
+    "C:\\Users\\felip\\OneDrive\\Documents\\C#\\Gerenciamento-de-oficinas-de-carro\\AutoManagerAPI\\AutoManagerAPI.csproj": {}
   },
   "projects": {
-    "C:\\MY SPACE\\Faculdade de Ciência da Computação\\4º Semestre\\Desenvolvimento de Software Visual\\Oficina de Carros\\OFICIAL 2\\Gerenciamento-de-oficinas-de-carro\\AutoManagerAPI\\AutoManagerAPI.csproj": {
+    "C:\\Users\\felip\\OneDrive\\Documents\\C#\\Gerenciamento-de-oficinas-de-carro\\AutoManagerAPI\\AutoManagerAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\MY SPACE\\Faculdade de Ciência da Computação\\4º Semestre\\Desenvolvimento de Software Visual\\Oficina de Carros\\OFICIAL 2\\Gerenciamento-de-oficinas-de-carro\\AutoManagerAPI\\AutoManagerAPI.csproj",
+        "projectUniqueName": "C:\\Users\\felip\\OneDrive\\Documents\\C#\\Gerenciamento-de-oficinas-de-carro\\AutoManagerAPI\\AutoManagerAPI.csproj",
         "projectName": "AutoManagerAPI",
-        "projectPath": "C:\\MY SPACE\\Faculdade de Ciência da Computação\\4º Semestre\\Desenvolvimento de Software Visual\\Oficina de Carros\\OFICIAL 2\\Gerenciamento-de-oficinas-de-carro\\AutoManagerAPI\\AutoManagerAPI.csproj",
-        "packagesPath": "C:\\Users\\icaro\\.nuget\\packages\\",
-        "outputPath": "C:\\MY SPACE\\Faculdade de Ciência da Computação\\4º Semestre\\Desenvolvimento de Software Visual\\Oficina de Carros\\OFICIAL 2\\Gerenciamento-de-oficinas-de-carro\\AutoManagerAPI\\obj\\",
+        "projectPath": "C:\\Users\\felip\\OneDrive\\Documents\\C#\\Gerenciamento-de-oficinas-de-carro\\AutoManagerAPI\\AutoManagerAPI.csproj",
+        "packagesPath": "C:\\Users\\felip\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\felip\\OneDrive\\Documents\\C#\\Gerenciamento-de-oficinas-de-carro\\AutoManagerAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\icaro\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\felip\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -73,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

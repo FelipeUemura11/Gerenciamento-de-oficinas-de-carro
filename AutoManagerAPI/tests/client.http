@@ -11,11 +11,11 @@ POST http://localhost:5072/client
 #     "Email": "felipe@gmail.com",
 #     "Phone": "5541997297809",
 #     "Cpf": "43051084530",
-#     "Cep": "80035050",
-#     "Estado": "Parana",
+#     "Cep": "82930230",
+#     "Estado": "PR",
 #     "Cidade": "Curitiba",
-#     "Bairro": "Cabral",
-#     "Logradouro": "Rua dos funcionarios",
+#     "Bairro": "Portao",
+#     "Logradouro": "Rua do jo",
 #     "Senha": "senha"
 # }
 
