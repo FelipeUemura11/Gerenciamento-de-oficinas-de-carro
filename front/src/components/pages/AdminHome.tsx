@@ -275,6 +275,22 @@ const AdminHome: React.FC = () => {
     }
   };
 
+  const handleRemoveCarService = async (serviceId: string) => {
+    try {
+      const response = await fetch(`http://localhost:5072/carservices/${serviceId}`, {
+        method: 'DELETE',
+      });
+      if (!response.ok) {
+        const data = await response.json();
+        console.error('Erro ao remover serviço', data);
+        return;
+      }
+      setCarServices(carServices.filter(service => service.id !== serviceId));
+    } catch (error) {
+      console.error('Erro ao remover serviço', error);
+    }
+  };
+
   const formatDate = (dateString: string) => {
     const options: Intl.DateTimeFormatOptions = {
       hour: '2-digit',
@@ -573,6 +589,12 @@ const AdminHome: React.FC = () => {
                     <div>
                       {service.name} - R${service.price} - {service.category} - {service.description}
                     </div>
+                    <button
+                      className="btn btn-danger btn-sm"
+                      onClick={() => handleRemoveCarService(service.id)}
+                    >
+                      Remover
+                    </button>
                   </li>
                 ))
               )}
