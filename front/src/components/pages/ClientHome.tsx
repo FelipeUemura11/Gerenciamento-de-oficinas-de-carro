@@ -19,6 +19,7 @@ interface Order {
   createdDate: string;
   status: boolean;
   carServiceId: string;
+  car: Car;
 }
 
 interface CarService {
@@ -37,7 +38,27 @@ const ClientHome: React.FC<ClientHomeProps> = ({ clientId }) => {
   const [selectedCar, setSelectedCar] = useState<Car | null>(null);
   const [newCar, setNewCar] = useState<Omit<Car, 'id'>>({ brand: '', model: '', year: '2024', plate: '', color: '', clientId, ordersHistoric: [] });
   const [carServices, setCarServices] = useState<CarService[]>([]);
-  const [newOrder, setNewOrder] = useState<Order>({ id: '', name: '', description: '', totalPrice: 0, createdDate: '', status: false , carServiceId: ''});
+  const [newOrder, setNewOrder] = useState<Omit<Order, 'id'>>({ 
+    name: '', 
+    description: '', 
+    totalPrice: 0, 
+    createdDate: '', 
+    status: false, 
+    carServiceId: '', 
+    car: {
+      id: '',
+      brand: '',
+      model: '',
+      year: '',
+      plate: '',
+      color: '',
+      clientId: '',
+      ordersHistoric: []
+    }
+  });
+  const [showAddCar, setShowAddCar] = useState(false);
+  const [showOrders, setShowOrders] = useState(false);
+  const [clientName, setClientName] = useState<string>('Cliente');
 
   useEffect(() => {
     const fetchCars = async () => {
@@ -55,7 +76,27 @@ const ClientHome: React.FC<ClientHomeProps> = ({ clientId }) => {
       try {
         const response = await fetch('http://localhost:5072/orders');
         const data = await response.json();
-        setOrders(data);
+        const ordersWithCarDetails = data.map((order: any) => {
+          if (order.Car) {
+            return {
+              ...order,
+              car: {
+                id: order.Car.Id,
+                brand: order.Car.Brand,
+                model: order.Car.Model,
+                year: order.Car.Year,
+                plate: order.Car.Plate,
+                color: order.Car.Color,
+                clientId: order.Car.ClientId,
+                ordersHistoric: order.Car.OrdersHistoric,
+              },
+            };
+          } else {
+            return order;
+          }
+        });
+        setOrders(ordersWithCarDetails);
+        console.log("ORDERS: ", ordersWithCarDetails);
       } catch (error) {
         console.error('Erro ao buscar ordens', error);
       }
@@ -71,14 +112,29 @@ const ClientHome: React.FC<ClientHomeProps> = ({ clientId }) => {
       }
     };
 
+    const fetchClientName = async () => {
+      try {
+        const response = await fetch(`http://localhost:5072/client/${clientId}`);
+        const data = await response.json();
+        setClientName(data.name);
+      } catch (error) {
+        console.error('Erro ao buscar nome do cliente', error);
+      }
+    };
+
     fetchCars();
     fetchOrders();
     fetchCarServices();
+    fetchClientName();
   }, [clientId]);
 
   const handleAddCar = async () => {
+    if (!newCar.brand || !newCar.model || !newCar.year || !newCar.plate || !newCar.color) {
+      alert('Por favor, preencha todas as informações do carro.');
+      return;
+    }
+  
     try {
-      console.log("cliente id: ", clientId);
       const carToAdd = { ...newCar, clientId };
       const response = await fetch('http://localhost:5072/car', {
         method: 'POST',
@@ -100,25 +156,31 @@ const ClientHome: React.FC<ClientHomeProps> = ({ clientId }) => {
   };
 
   const handleRemoveCar = async (carId: string) => {
-    console.log("SIIII: ", carId);
     try {
       const response = await fetch(`http://localhost:5072/car/${carId}`, {
         method: 'DELETE',
       });
-      console.log("SIIII: ", carId);
       if (!response.ok) {
         const data = await response.json();
         console.error('Erro ao remover carro', data);
         return;
       }
       setCars(cars.filter(car => car.id !== carId));
+      setOrders(orders.filter(order => order.car.id !== carId));
+      if (selectedCar && selectedCar.id === carId) {
+        setSelectedCar(null);
+      }
     } catch (error) {
       console.error('Erro ao remover carro', error);
     }
   };
 
   const handleSelectCar = (car: Car) => {
-    setSelectedCar(car);
+    if (selectedCar && selectedCar.id === car.id) {
+      setSelectedCar(null);
+    } else {
+      setSelectedCar(car);
+    }
   };
 
   const handleAddOrder = async () => {
@@ -126,19 +188,28 @@ const ClientHome: React.FC<ClientHomeProps> = ({ clientId }) => {
       alert('Selecione um carro primeiro.');
       return;
     }
-
+  
+    if (!newOrder.name || !newOrder.description || !newOrder.carServiceId) {
+      alert('Por favor, preencha todas as informações da ordem.');
+      return;
+    }
+  
     try {
+      console.log(newOrder);
+      const orderToAdd = {
+        ...newOrder,
+        carId: selectedCar.id,
+        clientId: clientId,
+        carServiceId: newOrder.carServiceId,
+        createdDate: new Date().toISOString(),
+      };
+      console.log(orderToAdd);
       const response = await fetch('http://localhost:5072/order', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          ...newOrder,
-          carId: selectedCar.id,
-          clientId: clientId,
-          carServiceId: newOrder.carServiceId,
-        }),
+        body: JSON.stringify(orderToAdd),
       });
       const data = await response.json();
       if (!response.ok) {
@@ -150,198 +221,259 @@ const ClientHome: React.FC<ClientHomeProps> = ({ clientId }) => {
         ...selectedCar,
         ordersHistoric: [...selectedCar.ordersHistoric, data],
       });
-      setNewOrder({ id: '', name: '', description: '', totalPrice: 0, createdDate: '', status: false , carServiceId: ''});
+      setNewOrder({ 
+        name: '', 
+        description: '', 
+        totalPrice: 0, 
+        createdDate: '', 
+        status: false, 
+        carServiceId: '', 
+        car: {
+          id: '',
+          brand: '',
+          model: '',
+          year: '',
+          plate: '',
+          color: '',
+          clientId: '',
+          ordersHistoric: []
+        }
+      });
     } catch (error) {
       console.error('Erro ao adicionar ordem', error);
     }
   };
 
-  return (
-    <div className="container my-4">
-    <h2 className="mb-4 text-primary">Meus Carros</h2>
-    <ul className="list-group mb-4">
-      {cars.map((car) => (
-        <li
-          key={car.id}
-          className="list-group-item d-flex justify-content-between align-items-center"
-        >
-          <div>
-            {car.brand} {car.model} ({car.year}) - {car.plate} - {car.color}
-          </div>
-          <div>
-            <button
-              className="btn btn-danger btn-sm me-2"
-              onClick={() => handleRemoveCar(car.id)}
-            >
-              Remover
-            </button>
-            <button
-              className="btn btn-info btn-sm"
-              onClick={() => handleSelectCar(car)}
-            >
-              Detalhes
-            </button>
-          </div>
-        </li>
-      ))}
-    </ul>
+  const formatDate = (dateString: string) => {
+    const options: Intl.DateTimeFormatOptions = {
+      hour: '2-digit',
+      minute: '2-digit',
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    };
+    return new Date(dateString).toLocaleString('pt-BR', options);
+  };
 
-    <h2 className="mb-4 text-success">Adicionar Novo Carro</h2>
-    <div className="row g-3 mb-4">
-      <div className="col-md-4">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Marca"
-          value={newCar.brand}
-          onChange={(e) =>
-            setNewCar({ ...newCar, brand: e.target.value })
-          }
-        />
-      </div>
-      <div className="col-md-4">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Modelo"
-          value={newCar.model}
-          onChange={(e) =>
-            setNewCar({ ...newCar, model: e.target.value })
-          }
-        />
-      </div>
-      <div className="col-md-4">
-        <input
-          type="number"
-          className="form-control"
-          placeholder="Ano"
-          value={newCar.year}
-          onChange={(e) =>
-            setNewCar({ ...newCar, year: e.target.value })
-          }
-        />
-      </div>
-      <div className="col-md-4">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Placa"
-          value={newCar.plate}
-          onChange={(e) =>
-            setNewCar({ ...newCar, plate: e.target.value })
-          }
-        />
-      </div>
-      <div className="col-md-4">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Cor"
-          value={newCar.color}
-          onChange={(e) =>
-            setNewCar({ ...newCar, color: e.target.value })
-          }
-        />
-      </div>
-      <div className="col-md-4">
-        <button className="btn btn-primary w-100" onClick={handleAddCar}>
-          Adicionar Carro
-        </button>
+  const totalPendingPrice = orders
+    .filter(order => !order.status)
+    .reduce((total, order) => total + order.totalPrice, 0);
+
+  return (
+    <div>
+      <nav className="navbar navbar-light bg-light">
+        <div className="container-fluid">
+          <span className="navbar-brand mb-0 h1">{clientName}</span>
+          <span className="navbar-text">
+            <i className="bi bi-person-circle" style={{ fontSize: '1.5rem' }}></i>
+          </span>
+        </div>
+      </nav>
+      <div className="container my-4">
+        <h2 className="mb-4 text-primary">Meus Carros</h2>
+        <ul className="list-group mb-4">
+          {cars.map((car) => (
+            <li
+              key={car.id}
+              className="list-group-item d-flex justify-content-between align-items-center"
+            >
+              <div>
+                {car.brand} {car.model} ({car.year}) - {car.plate} - {car.color}
+              </div>
+              <div>
+                <button
+                  className="btn btn-danger btn-sm me-2"
+                  onClick={() => handleRemoveCar(car.id)}
+                >
+                  Remover
+                </button>
+                <button
+                  className="btn btn-info btn-sm"
+                  onClick={() => handleSelectCar(car)}
+                >
+                  Detalhes
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        <h2 className="mb-4 text-success" onClick={() => setShowAddCar(!showAddCar)} style={{ cursor: 'pointer' }}>
+          Adicionar Novo Carro {showAddCar ? '▼' : '►'}
+        </h2>
+        {showAddCar && (
+          <div className="row g-3 mb-4">
+            <div className="col-md-4">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Marca"
+                value={newCar.brand}
+                onChange={(e) =>
+                  setNewCar({ ...newCar, brand: e.target.value })
+                }
+              />
+            </div>
+            <div className="col-md-4">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Modelo"
+                value={newCar.model}
+                onChange={(e) =>
+                  setNewCar({ ...newCar, model: e.target.value })
+                }
+              />
+            </div>
+            <div className="col-md-4">
+              <input
+                type="number"
+                className="form-control"
+                placeholder="Ano"
+                value={newCar.year}
+                onChange={(e) =>
+                  setNewCar({ ...newCar, year: e.target.value })
+                }
+              />
+            </div>
+            <div className="col-md-4">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Placa"
+                value={newCar.plate}
+                onChange={(e) =>
+                  setNewCar({ ...newCar, plate: e.target.value })
+                }
+              />
+            </div>
+            <div className="col-md-4">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Cor"
+                value={newCar.color}
+                onChange={(e) =>
+                  setNewCar({ ...newCar, color: e.target.value })
+                }
+              />
+            </div>
+            <div className="col-md-4">
+              <button className="btn btn-primary w-100" onClick={handleAddCar}>
+                Adicionar Carro
+              </button>
+            </div>
+          </div>
+        )}
+
+        {selectedCar && (
+          <div className="card mb-4">
+            <div className="card-body">
+              <h3 className="card-title">Detalhes do Carro</h3>
+              <p className="card-text">
+                <h5>{selectedCar.brand} {selectedCar.model} ({selectedCar.year})</h5>
+                {selectedCar.plate} - {selectedCar.color}
+              </p>
+              <h4>Histórico de Ordens</h4>
+              <ul className="list-group mb-3">
+                {selectedCar.ordersHistoric.map((order) => (
+                  <li key={order.id} className="list-group-item d-flex justify-content-between align-items-center">
+                    <span>
+                      <strong>Nome:</strong> {order.name} - <strong>Descrição:</strong> {order.description} -{' '}
+                      {formatDate(order.createdDate)}
+                    </span>
+                    <span>
+                      <span className="badge bg-success fs-5 me-2">R${order.totalPrice}</span>
+                      {order.status ? (
+                        <span className="badge bg-success fs-5">Concluída</span>
+                      ) : (
+                        <span className="badge bg-danger fs-5">Pendente</span>
+                      )}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <h4>Adicionar Nova Ordem</h4>
+              <div className="row g-3">
+                <div className="col-md-4">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Nome"
+                    value={newOrder.name}
+                    onChange={(e) =>
+                      setNewOrder({ ...newOrder, name: e.target.value })
+                    }
+                  />
+                </div>
+                <div className="col-md-4">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Descrição"
+                    value={newOrder.description}
+                    onChange={(e) =>
+                      setNewOrder({ ...newOrder, description: e.target.value })
+                    }
+                  />
+                </div>
+                <div className="col-md-4">
+                  <select
+                    className="form-select"
+                    onChange={(e) =>
+                      setNewOrder({ ...newOrder, carServiceId: e.target.value })
+                    }
+                  >
+                    <option value="">Selecione um serviço</option>
+                    {carServices.map((service) => (
+                      <option key={service.id} value={service.id}>
+                        {service.name} - R${service.price}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+              <button
+                className="btn btn-success mt-3"
+                onClick={handleAddOrder}
+              >
+                Adicionar Ordem
+              </button>
+            </div>
+          </div>
+        )}
+
+        <h2 className="mb-4 text-warning" onClick={() => setShowOrders(!showOrders)} style={{ cursor: 'pointer' }}>
+          Minhas Ordens {showOrders ? '▼' : '►'}
+        </h2>
+        {showOrders && (
+          <>
+            <ul className="list-group">
+              {orders.map((order) => (
+                <li
+                  key={order.id}
+                  className="list-group-item d-flex justify-content-between align-items-center"
+                >
+                  <span>
+                    <strong>Nome:</strong> {order.name} - <strong>Descrição:</strong> {order.description} -{' '}
+                    {formatDate(order.createdDate)} - {order.car.brand} {order.car.model} ({order.car.year})
+                  </span>
+                  <span>
+                    <span className="badge bg-success fs-5 me-2">R${order.totalPrice}</span>
+                    {order.status ? (
+                      <span className="badge bg-success fs-5">Concluída</span>
+                    ) : (
+                      <span className="badge bg-danger fs-5">Pendente</span>
+                    )}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <h3 className="mt-4">Total a Pagar: <span className="badge bg-danger fs-4">R${totalPendingPrice}</span></h3>
+          </>
+        )}
       </div>
     </div>
-
-    {selectedCar && (
-      <div className="card mb-4">
-        <div className="card-body">
-          <h3 className="card-title">Detalhes do Carro</h3>
-          <p className="card-text">
-            {selectedCar.brand} {selectedCar.model} ({selectedCar.year}) -{' '}
-            {selectedCar.plate} - {selectedCar.color}
-          </p>
-          <h4>Histórico de Ordens</h4>
-          <ul className="list-group mb-3">
-            {selectedCar.ordersHistoric.map((order) => (
-              <li key={order.id} className="list-group-item">
-                {order.name} - {order.description} - {order.totalPrice} -{' '}
-                {order.createdDate} -{' '}
-                {order.status ? (
-                  <span className="text-success">Concluída</span>
-                ) : (
-                  <span className="text-danger">Pendente</span>
-                )}
-              </li>
-            ))}
-          </ul>
-          <h4>Adicionar Nova Ordem</h4>
-          <div className="row g-3">
-            <div className="col-md-4">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Nome"
-                value={newOrder.name}
-                onChange={(e) =>
-                  setNewOrder({ ...newOrder, name: e.target.value })
-                }
-              />
-            </div>
-            <div className="col-md-4">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Descrição"
-                value={newOrder.description}
-                onChange={(e) =>
-                  setNewOrder({ ...newOrder, description: e.target.value })
-                }
-              />
-            </div>
-            <div className="col-md-4">
-              <select
-                className="form-select"
-                onChange={(e) =>
-                  setNewOrder({ ...newOrder, carServiceId: e.target.value })
-                }
-              >
-                <option value="">Selecione um serviço</option>
-                {carServices.map((service) => (
-                  <option key={service.id} value={service.id}>
-                    {service.name} - {service.price}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-          <button
-            className="btn btn-success mt-3"
-            onClick={handleAddOrder}
-          >
-            Adicionar Ordem
-          </button>
-        </div>
-      </div>
-    )}
-
-    <h2 className="mb-4 text-warning">Minhas Ordens</h2>
-    <ul className="list-group">
-      {orders.map((order) => (
-        <li
-          key={order.id}
-          className="list-group-item d-flex justify-content-between align-items-center"
-        >
-          <span>
-            {order.name} - {order.description} - {order.totalPrice} -{' '}
-            {order.createdDate} -{' '}
-            {order.status ? (
-              <span className="text-success">Concluída</span>
-            ) : (
-              <span className="text-danger">Pendente</span>
-            )}
-          </span>
-        </li>
-      ))}
-    </ul>
-  </div>
   );
 };
 

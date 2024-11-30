@@ -12,7 +12,6 @@ public class AppDbContext : DbContext
     // Opcional: Definindo como o EF Core deve configurar o contexto
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-            optionsBuilder.UseSqlite("Data Source=database.db");
-        
+        optionsBuilder.UseSqlite("Data Source=../AutoManagerAPI/database.db");
     }
 }

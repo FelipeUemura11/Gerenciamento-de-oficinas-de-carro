@@ -140,7 +140,9 @@ app.MapGet("/carservices", async (AppDbContext context) =>
 // Retornar serviço por nome
 app.MapGet("/carservice/{name}", async (string name, AppDbContext context) =>
 {
-    var carservice = await context.CarServices.Where(c => c.Name.Contains(name)).ToListAsync();
+    var carservice = await context.CarServices
+        .Where(c => c.Name.ToLower().Contains(name.ToLower()))
+        .ToListAsync();
     return carservice.Any() ? Results.Ok(carservice) : Results.NotFound("Nenhum serviço encontrado.");
 });
 
@@ -362,8 +364,6 @@ app.MapGet("/car/{id}", async (string id, AppDbContext context) =>
 
 app.MapDelete("/car/{id}", async (string id, AppDbContext context) => 
 {
-    var allCars = context.Cars.ToList();
-    context.Cars.RemoveRange(allCars);
     var car = await context.Cars
         .Include(c => c.Client)
         .Include(c => c.OrdersHistoric) // Inclui as ordens históricas do carro
@@ -426,7 +426,7 @@ app.MapPost("/order", async (Order order, AppDbContext context) =>
     var carService = await context.CarServices.FindAsync(carServiceId);
     if (carService == null)
     {
-        return Results.NotFound("Serviço n��o encontrado.");
+        return Results.NotFound("Serviço não encontrado.");
     }
 
     order.Car = car;

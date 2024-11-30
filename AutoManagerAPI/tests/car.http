@@ -22,4 +22,4 @@ GET http://localhost:5072/cars
 GET http://localhost:5072/car/
 
 ### Remove o carro (pelo id)
-DELETE http://localhost:5072/car/6f55d815-f149-4933-bb34-90d8602d63b4
+DELETE http://localhost:5072/car/cc834977-7e0b-4cb9-a60e-830afb8d447d

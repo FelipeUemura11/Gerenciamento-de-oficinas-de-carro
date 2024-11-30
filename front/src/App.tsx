@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import Register from './components/pages/Register';
 import Login from './components/pages/Login';
 import AdminHome from './components/pages/AdminHome';

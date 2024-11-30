@@ -4,11 +4,11 @@ POST http://localhost:5072/order
 Content-Type: application/json
 
 {
-    "Name": "Troca de Óleo para Gol 2012",
+    "Nam": "Troca de Óleo para Gol 2012",
     "Description": "Troca de Óleo Comum",
-    "CarServiceId": "7cc04f3d-692d-4df1-b64b-73d291fe060a",
-    "ClientId": "0079e009-9461-4f4e-8136-55af4a2ee409",
-    "CarId": "1cab465c-f0e5-4bab-a903-ec72bc321a5b"
+    "CarServiceId": "cd793ecf-8fab-462d-b241-2a6498cca5f8",
+    "ClientId": "4358a0e3-76f4-4f71-9b04-a93ab4001698",
+    "CarId": "cc834977-7e0b-4cb9-a60e-830afb8d447d"
 }
 
 ### Obter todas as ordens

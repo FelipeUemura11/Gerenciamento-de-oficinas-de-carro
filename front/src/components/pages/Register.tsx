@@ -14,6 +14,8 @@ function Register() {
         Senha: ""
     });
 
+    const [cepTimeout, setCepTimeout] = useState<NodeJS.Timeout | null>(null);
+
     // Atualiza o formData conforme o usuario preenche o formulario
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -21,13 +23,19 @@ function Register() {
             ...prevData,
             [name]: value,
         }));
+
+        if (name === "Cep") {
+            if (cepTimeout) {
+                clearTimeout(cepTimeout);
+            }
+            setCepTimeout(setTimeout(() => handleCepChange(value), 500));
+        }
     };
 
-    // Faz a busca de dados de endereco do usuario pelo CEP e preenche automaticamente
-    const handleBlur = async () => {
-        if (formData.Cep) {
+    const handleCepChange = async (cep: string) => {
+        if (cep) {
             try {
-                const response = await fetch(`https://viacep.com.br/ws/${formData.Cep}/json`);
+                const response = await fetch(`https://viacep.com.br/ws/${cep}/json`);
                 const cepData = await response.json();
 
                 if (cepData) {
@@ -121,7 +129,6 @@ function Register() {
                     placeholder="Digite o CEP"
                     value={formData.Cep}
                     onChange={handleChange}
-                    onBlur={handleBlur}
                     required
                 />
                 <input
