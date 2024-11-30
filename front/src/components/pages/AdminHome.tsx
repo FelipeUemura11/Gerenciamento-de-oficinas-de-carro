@@ -1,4 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import Car from '../../models/Car';
+import CarService from '../../models/CarService';
+import Client from '../../models/Client';
+import ClientHomeProps from '../../models/ClientHomeProps';
+import Order from '../../models/Order';
 
 const AdminHome: React.FC = () => {
   const [clients, setClients] = useState<Client[]>([]);

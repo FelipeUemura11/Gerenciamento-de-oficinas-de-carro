@@ -1,3 +1,5 @@
+import Car from './Car';
+
 interface Order {
     id: string;
     name: string;
@@ -8,3 +10,5 @@ interface Order {
     carServiceId: string;
     car: Car;
   }
+
+export default Order;

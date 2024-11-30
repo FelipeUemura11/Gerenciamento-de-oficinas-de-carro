@@ -1,3 +1,6 @@
+import Car from './Car';
+import Order from './Order';
+
 interface Client {
     id: string;
     name: string;
@@ -12,3 +15,5 @@ interface Client {
     bairro?: string;
     logradouro?: string;
   }
+
+  export default Client;

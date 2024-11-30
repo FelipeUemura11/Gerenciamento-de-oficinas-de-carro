@@ -520,6 +520,38 @@ app.MapGet("/order/{id}", async (string id, AppDbContext context) =>
     return Results.Ok(orderDto);
 });
 
+// Obter ordens por clientId
+app.MapGet("/orders/client/{clientId}", async (string clientId, AppDbContext context) =>
+{
+    var orders = await context.Orders
+        .Include(o => o.Client)
+        .Include(o => o.Car)
+        .Include(o => o.CarService)
+        .Where(o => o.ClientId == clientId)
+        .ToListAsync();
+
+    var ordersDto = orders.Select(order =>
+    {
+        var clientDto = MapToClientDto(order.Client);
+        var carDto = MapToCarDto(order.Car);
+
+        return new
+        {
+            order.Id,
+            order.Name,
+            order.Description,
+            CarService = order.CarService,
+            TotalPrice = order.TotalPrice,
+            order.CreatedDate,
+            order.Status,
+            Client = clientDto,
+            Car = carDto
+        };
+    });
+
+    return Results.Ok(ordersDto);
+});
+
 // Atualizar ordem de false (não concluída) para true (concluída) - Order não terá DELETE, ela ficará registrada sempre no histórico
 app.MapPut("/orders/status/{id}", async (string id, AppDbContext context) =>
 {

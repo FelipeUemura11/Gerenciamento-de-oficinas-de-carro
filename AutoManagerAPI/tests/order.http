@@ -19,3 +19,6 @@ GET http://localhost:5072/order/78dd8208-17e1-4d82-b238-d136bfca8aed
 
 ### Concluir uma ordem
 PUT http://localhost:5072/orders/status/78dd8208-17e1-4d82-b238-d136bfca8aed
+
+### Pedir ordem por cliente
+GET http://localhost:5072/orders/client/63e9fcb4-7b6f-4ac7-b3ec-720b315ed38c

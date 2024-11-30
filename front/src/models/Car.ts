@@ -1,3 +1,5 @@
+import Order from "./Order";
+
 interface Car {
     id: string;
     brand: string;
@@ -8,3 +10,5 @@ interface Car {
     clientId: string;
     ordersHistoric: Order[];
   }
+
+  export default Car;

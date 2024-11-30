@@ -5,3 +5,5 @@ interface CarService {
     description: string;
     category: string;
   }
+
+export default CarService;

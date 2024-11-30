@@ -1,4 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import Car from '../../models/Car';
+import CarService from '../../models/CarService';
+import Client from '../../models/Client';
+import ClientHomeProps from '../../models/ClientHomeProps';
+import Order from '../../models/Order';
 
 const ClientHome: React.FC<ClientHomeProps> = ({ clientId }) => {
   const [cars, setCars] = useState<Car[]>([]);
@@ -6,6 +11,7 @@ const ClientHome: React.FC<ClientHomeProps> = ({ clientId }) => {
   const [selectedCar, setSelectedCar] = useState<Car | null>(null);
   const [newCar, setNewCar] = useState<Omit<Car, 'id'>>({ brand: '', model: '', year: '2024', plate: '', color: '', clientId, ordersHistoric: [] });
   const [carServices, setCarServices] = useState<CarService[]>([]);
+  const [filteredOrders, setFilteredOrders] = useState<Order[]>([]);
   const [newOrder, setNewOrder] = useState<Omit<Order, 'id'>>({ 
     name: '', 
     description: '', 
@@ -42,7 +48,7 @@ const ClientHome: React.FC<ClientHomeProps> = ({ clientId }) => {
 
     const fetchOrders = async () => {
       try {
-        const response = await fetch('http://localhost:5072/orders');
+        const response = await fetch(`http://localhost:5072/orders/client/${clientId}`);
         const data = await response.json();
         const ordersWithCarDetails = data.map((order: any) => {
           if (order.Car) {
@@ -62,7 +68,7 @@ const ClientHome: React.FC<ClientHomeProps> = ({ clientId }) => {
           } else {
             return order;
           }
-        });
+        })
         setOrders(ordersWithCarDetails);
         console.log("ORDERS: ", ordersWithCarDetails);
       } catch (error) {
