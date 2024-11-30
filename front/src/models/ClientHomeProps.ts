@@ -1,0 +1,4 @@
+interface ClientHomeProps {
+    clientId: string;
+  }
+  

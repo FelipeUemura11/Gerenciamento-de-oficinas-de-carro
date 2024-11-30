@@ -1,51 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-interface Client {
-  id: string;
-  name: string;
-  email: string;
-  phone: string;
-  cpf: string;
-  cars: Car[];
-  orders: Order[];
-  cep?: string;
-  estado?: string;
-  cidade?: string;
-  bairro?: string;
-  logradouro?: string;
-}
-
-
-interface Car {
-  id: string;
-  brand: string;
-  model: string;
-  year: string;
-  plate: string;
-  color: string;
-  clientId: string;
-  ordersHistoric: Order[];
-}
-
-interface Order {
-  id: string;
-  name: string;
-  description: string;
-  totalPrice: number;
-  createdDate: string;
-  status: boolean;
-  carServiceId: string;
-  car: Car;
-}
-
-interface CarService {
-  id: string;
-  name: string;
-  price: number;
-  description: string;
-  category: string;
-}
-
 const AdminHome: React.FC = () => {
   const [clients, setClients] = useState<Client[]>([]);
   const [cars, setCars] = useState<Car[]>([]);
