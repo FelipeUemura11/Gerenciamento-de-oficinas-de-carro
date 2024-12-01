@@ -244,7 +244,7 @@ const ClientHome: React.FC<ClientHomeProps> = ({ clientId }) => {
         </div>
       </nav>
       <div className="container my-4">
-        <h2 className="mb-4 text-primary">Meus Carros</h2>
+        <h2 className="mb-4 text-primary title-nav">Meus Carros</h2>
         <ul className="list-group mb-4">
           {cars.map((car) => (
             <li
@@ -275,12 +275,12 @@ const ClientHome: React.FC<ClientHomeProps> = ({ clientId }) => {
         {selectedCar && (
           <div className="card mb-4">
             <div className="card-body">
-              <h3 className="card-title">Detalhes do Carro</h3>
+              <h3 className="card-title title-nav">Detalhes do Carro</h3>
               <p className="card-text">
                 <h5>{selectedCar.brand} {selectedCar.model} ({selectedCar.year})</h5>
                 {selectedCar.plate} - {selectedCar.color}
               </p>
-              <h4>Histórico de Ordens</h4>
+              <h4 className="title-nav">Histórico de Ordens</h4>
               <ul className="list-group mb-3">
                 {selectedCar.ordersHistoric.map((order) => (
                   <li key={order.id} className="list-group-item d-flex justify-content-between align-items-center">
@@ -299,7 +299,7 @@ const ClientHome: React.FC<ClientHomeProps> = ({ clientId }) => {
                   </li>
                 ))}
               </ul>
-              <h4>Adicionar Nova Ordem</h4>
+              <h4 className="title-nav">Adicionar Nova Ordem</h4>
               <div className="row g-3">
                 <div className="col-md-4">
                   <input
@@ -349,7 +349,7 @@ const ClientHome: React.FC<ClientHomeProps> = ({ clientId }) => {
           </div>
         )}
 
-<h2 className="mb-4 text-success" onClick={() => setShowAddCar(!showAddCar)} style={{ cursor: 'pointer' }}>
+<h2 className="mb-4 text-success title-nav" onClick={() => setShowAddCar(!showAddCar)} style={{ cursor: 'pointer' }}>
           Adicionar Novo Carro {showAddCar ? '▼' : '►'}
         </h2>
         {showAddCar && (
@@ -417,7 +417,7 @@ const ClientHome: React.FC<ClientHomeProps> = ({ clientId }) => {
           </div>
         )}
 
-        <h2 className="mb-4 text-warning" onClick={() => setShowOrders(!showOrders)} style={{ cursor: 'pointer' }}>
+        <h2 className="mb-4 text-warning title-nav" onClick={() => setShowOrders(!showOrders)} style={{ cursor: 'pointer' }}>
           Minhas Ordens {showOrders ? '▼' : '►'}
         </h2>
         {showOrders && (

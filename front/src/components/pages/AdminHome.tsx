@@ -273,7 +273,7 @@ const AdminHome: React.FC = () => {
         </div>
       </nav>
       <div className="container my-4">
-        <h2 className="mb-4 text-primary" onClick={() => setShowClients(!showClients)} style={{ cursor: 'pointer' }}>
+        <h2 className="mb-4 text-primary title-nav" onClick={() => setShowClients(!showClients)} style={{ cursor: 'pointer' }}>
           Clientes {showClients ? '▼' : '►'}
         </h2>
         {showClients && (
@@ -464,7 +464,7 @@ const AdminHome: React.FC = () => {
           </div>
         )}
 
-        <h2 className="mb-4 text-success">Adicionar Novo Serviço</h2>
+        <h2 className="mb-4 text-success title-nav">Adicionar Novo Serviço</h2>
         <div className="row g-3 mb-4">
           <div className="col-md-3">
             <input
@@ -517,12 +517,12 @@ const AdminHome: React.FC = () => {
           </div>
         </div>
 
-        <h2 className="mb-4 text-info" onClick={() => setShowCarServices(!showCarServices)} style={{ cursor: 'pointer' }}>
+        <h2 className="mb-4 text-info title-nav" onClick={() => setShowCarServices(!showCarServices)} style={{ cursor: 'pointer' }}>
           Serviços de Carro {showCarServices ? '▼' : '►'}
         </h2>
         {showCarServices && (
           <>
-            <div className="input-group mb-3">
+            <div className="input-group mb-3 search-bar-div">
               <input
                 type="text"
                 className="form-control"
@@ -530,10 +530,10 @@ const AdminHome: React.FC = () => {
                 value={searchService}
                 onChange={(e) => setSearchService(e.target.value)}
               />
-              <button className="btn btn-outline-secondary" onClick={handleSearchService}>
+              <button className="btn btn-outline-secondary search-bar-options" onClick={handleSearchService}>
                 Pesquisar
               </button>
-              <button className="btn btn-outline-secondary" onClick={handleResetServiceSearch}>
+              <button className="btn btn-outline-secondary search-bar-options" onClick={handleResetServiceSearch}>
                 Resetar
               </button>
             </div>
@@ -562,7 +562,7 @@ const AdminHome: React.FC = () => {
           </>
         )}
 
-        <h2 className="mb-4 text-warning" onClick={() => setShowCars(!showCars)} style={{ cursor: 'pointer' }}>
+        <h2 className="mb-4 text-warning title-nav" onClick={() => setShowCars(!showCars)} style={{ cursor: 'pointer' }}>
           Carros {showCars ? '▼' : '►'}
         </h2>
         {showCars && (
@@ -637,7 +637,7 @@ const AdminHome: React.FC = () => {
           </div>
         )}
 
-        <h2 className="mb-4 text-warning" onClick={() => setShowOrders(!showOrders)} style={{ cursor: 'pointer' }}>
+        <h2 className="mb-4 text-warning title-nav" onClick={() => setShowOrders(!showOrders)} style={{ cursor: 'pointer' }}>
           Ordens {showOrders ? '▼' : '►'}
         </h2>
         {showOrders && (
