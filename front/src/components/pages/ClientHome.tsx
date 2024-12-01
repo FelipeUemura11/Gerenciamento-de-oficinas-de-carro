@@ -234,10 +234,10 @@ const ClientHome: React.FC<ClientHomeProps> = ({ clientId }) => {
     .reduce((total, order) => total + order.totalPrice, 0);
 
   return (
-    <div>
-      <nav className="navbar navbar-light bg-light">
+    <div className="home-container">
+      <nav>
         <div className="container-fluid">
-          <span className="navbar-brand mb-0 h1">{clientName}</span>
+          <h1>Bem vindo, {clientName}.</h1>
           <span className="navbar-text">
             <i className="bi bi-person-circle" style={{ fontSize: '1.5rem' }}></i>
           </span>
@@ -271,74 +271,6 @@ const ClientHome: React.FC<ClientHomeProps> = ({ clientId }) => {
             </li>
           ))}
         </ul>
-
-        <h2 className="mb-4 text-success" onClick={() => setShowAddCar(!showAddCar)} style={{ cursor: 'pointer' }}>
-          Adicionar Novo Carro {showAddCar ? '▼' : '►'}
-        </h2>
-        {showAddCar && (
-          <div className="row g-3 mb-4">
-            <div className="col-md-4">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Marca"
-                value={newCar.brand}
-                onChange={(e) =>
-                  setNewCar({ ...newCar, brand: e.target.value })
-                }
-              />
-            </div>
-            <div className="col-md-4">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Modelo"
-                value={newCar.model}
-                onChange={(e) =>
-                  setNewCar({ ...newCar, model: e.target.value })
-                }
-              />
-            </div>
-            <div className="col-md-4">
-              <input
-                type="number"
-                className="form-control"
-                placeholder="Ano"
-                value={newCar.year}
-                onChange={(e) =>
-                  setNewCar({ ...newCar, year: e.target.value })
-                }
-              />
-            </div>
-            <div className="col-md-4">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Placa"
-                value={newCar.plate}
-                onChange={(e) =>
-                  setNewCar({ ...newCar, plate: e.target.value })
-                }
-              />
-            </div>
-            <div className="col-md-4">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Cor"
-                value={newCar.color}
-                onChange={(e) =>
-                  setNewCar({ ...newCar, color: e.target.value })
-                }
-              />
-            </div>
-            <div className="col-md-4">
-              <button className="btn btn-primary w-100" onClick={handleAddCar}>
-                Adicionar Carro
-              </button>
-            </div>
-          </div>
-        )}
 
         {selectedCar && (
           <div className="card mb-4">
@@ -412,6 +344,74 @@ const ClientHome: React.FC<ClientHomeProps> = ({ clientId }) => {
                 onClick={handleAddOrder}
               >
                 Adicionar Ordem
+              </button>
+            </div>
+          </div>
+        )}
+
+<h2 className="mb-4 text-success" onClick={() => setShowAddCar(!showAddCar)} style={{ cursor: 'pointer' }}>
+          Adicionar Novo Carro {showAddCar ? '▼' : '►'}
+        </h2>
+        {showAddCar && (
+          <div className="row g-3 mb-4">
+            <div className="col-md-4">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Marca"
+                value={newCar.brand}
+                onChange={(e) =>
+                  setNewCar({ ...newCar, brand: e.target.value })
+                }
+              />
+            </div>
+            <div className="col-md-4">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Modelo"
+                value={newCar.model}
+                onChange={(e) =>
+                  setNewCar({ ...newCar, model: e.target.value })
+                }
+              />
+            </div>
+            <div className="col-md-4">
+              <input
+                type="number"
+                className="form-control"
+                placeholder="Ano"
+                value={newCar.year}
+                onChange={(e) =>
+                  setNewCar({ ...newCar, year: e.target.value })
+                }
+              />
+            </div>
+            <div className="col-md-4">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Placa"
+                value={newCar.plate}
+                onChange={(e) =>
+                  setNewCar({ ...newCar, plate: e.target.value })
+                }
+              />
+            </div>
+            <div className="col-md-4">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Cor"
+                value={newCar.color}
+                onChange={(e) =>
+                  setNewCar({ ...newCar, color: e.target.value })
+                }
+              />
+            </div>
+            <div className="col-md-4">
+              <button className="btn btn-primary w-100" onClick={handleAddCar}>
+                Adicionar Carro
               </button>
             </div>
           </div>

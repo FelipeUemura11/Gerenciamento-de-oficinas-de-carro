@@ -6,6 +6,7 @@ import Login from './components/pages/Login';
 import AdminHome from './components/pages/AdminHome';
 import ProtectedRoute from './components/ProtectedRoute';
 import ClientHome from './components/pages/ClientHome'; // Assuming ClientHome is another component
+import './components/styles/style.css';  // Import CSS
 
 function App() {
   const [isRegister, setIsRegister] = useState(false);
@@ -17,36 +18,47 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div>
-              <h1>Gerenciamento Automóveis</h1>
-              <button onClick={toggleForm}>
-                {isRegister ? 'Já tem uma conta? Fazer Login' : 'Não tem conta? Registrar'}
-              </button>
-              {isRegister ? <Register /> : <Login setIsAuthenticated={setIsAuthenticated} setIsAdmin={setIsAdmin} setClientId={setClientId} />}
-            </div>
-          }
-        />
-        <Route
-          path="/admin"
-          element={
-            <ProtectedRoute isAuthenticated={isAuthenticated && isAdmin}>
-              <AdminHome />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/home"
-          element={
-            <ProtectedRoute isAuthenticated={isAuthenticated && !isAdmin}>
-              <ClientHome clientId={clientId!} />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
+      <div>
+        {/* Barra superior */}
+        <header className="header">
+          <div className="logo-container">
+            <img src="images/logosite.jpg" alt="Logo" className="logo" />
+          </div>
+          <div className="title-container">
+            <h1>Gerenciamento de Automóveis</h1>
+          </div>
+        </header>
+
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div>
+                <button onClick={toggleForm} className={isRegister ? 'btn-login' : 'btn-cadastro'}>
+                  {isRegister ? 'Já tem uma conta? Acesse' : 'Ainda não tem conta? Registre-se'}
+                </button>
+                {isRegister ? <Register /> : <Login setIsAuthenticated={setIsAuthenticated} setIsAdmin={setIsAdmin} setClientId={setClientId} />}
+              </div>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated && isAdmin}>
+                <AdminHome />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/home"
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated && !isAdmin}>
+                <ClientHome clientId={clientId!} />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

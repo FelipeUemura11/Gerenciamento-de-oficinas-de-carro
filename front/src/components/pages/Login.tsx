@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import LoginForm from '../../models/LoginForm';
+import '../styles/style.css';
+
+
 
 interface LoginProps {
   setIsAuthenticated: (isAuthenticated: boolean) => void;
@@ -48,12 +51,14 @@ const Login: React.FC<LoginProps> = ({ setIsAuthenticated, setIsAdmin, setClient
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="email" name="email" value={formData.email} onChange={handleChange} />
-      <input type="password" name="senha" value={formData.senha} onChange={handleChange} />
-      <button type="submit">Login</button>
-      {errorMessage && <p>{errorMessage}</p>}
-    </form>
+      <form className="formulario-login" onSubmit={handleSubmit}>
+        <h2>Email : </h2>
+        <input type="email" name="email" value={formData.email} onChange={handleChange} />
+        <h2>Senha : </h2>
+        <input type="password" name="senha" value={formData.senha} onChange={handleChange} />
+        <button type="submit">Login</button>
+        {errorMessage && <p>{errorMessage}</p>}
+      </form>
   );
 };
 

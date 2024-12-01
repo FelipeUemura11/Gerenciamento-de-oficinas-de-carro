@@ -89,88 +89,104 @@ function Register() {
 
     return (
         <div>
-            <h1>Registro de Cliente</h1>
             <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="Name"
-                    placeholder="Nome"
-                    value={formData.Name}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    type="email"
-                    name="Email"
-                    placeholder="Email"
-                    value={formData.Email}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    type="text"
-                    name="Cpf"
-                    placeholder="CPF"
-                    value={formData.Cpf}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    type="text"
-                    name="Phone"
-                    placeholder="Telefone"
-                    value={formData.Phone}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    type="text"
-                    name="Cep"
-                    placeholder="Digite o CEP"
-                    value={formData.Cep}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    type="text"
-                    name="Estado"
-                    placeholder="Estado"
-                    value={formData.Estado}
-                    onChange={handleChange}
-                    readOnly
-                />
-                <input
-                    type="text"
-                    name="Cidade"
-                    placeholder="Cidade"
-                    value={formData.Cidade}
-                    onChange={handleChange}
-                    readOnly
-                />
-                <input
-                    type="text"
-                    name="Bairro"
-                    placeholder="Bairro"
-                    value={formData.Bairro}
-                    onChange={handleChange}
-                    readOnly
-                />
-                <input
-                    type="text"
-                    name="Logradouro"
-                    placeholder="Logradouro"
-                    value={formData.Logradouro}
-                    onChange={handleChange}
-                    readOnly
-                />
-                <input
-                    type="password"
-                    name="Senha"
-                    placeholder="Senha"
-                    value={formData.Senha}
-                    onChange={handleChange}
-                    required
-                />
+                <h1 className="titulo-registro">Registro de Cliente</h1>
+                <div className="input-container">
+                    <div className="input-group">
+                        <input
+                            type="text"
+                            name="Name"
+                            placeholder="Nome"
+                            value={formData.Name}
+                            onChange={handleChange}
+                            required
+                        />
+                        <input
+                            type="email"
+                            name="Email"
+                            placeholder="Email"
+                            value={formData.Email}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+
+                    <div className="input-group">
+                        <input
+                            type="text"
+                            name="Cpf"
+                            placeholder="CPF"
+                            value={formData.Cpf}
+                            onChange={handleChange}
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="Phone"
+                            placeholder="Telefone"
+                            value={formData.Phone}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+
+                    <div className="input-group">
+                        <input
+                            type="text"
+                            name="Cep"
+                            placeholder="Digite o CEP"
+                            value={formData.Cep}
+                            onChange={handleChange}
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="Estado"
+                            placeholder="Estado"
+                            value={formData.Estado}
+                            onChange={handleChange}
+                            readOnly
+                        />
+                    </div>
+
+                    <div className="input-group">
+                        <input
+                            type="text"
+                            name="Cidade"
+                            placeholder="Cidade"
+                            value={formData.Cidade}
+                            onChange={handleChange}
+                            readOnly
+                        />
+                        <input
+                            type="text"
+                            name="Bairro"
+                            placeholder="Bairro"
+                            value={formData.Bairro}
+                            onChange={handleChange}
+                            readOnly
+                        />
+                    </div>
+
+                    <div className="input-group">
+                        <input
+                            type="text"
+                            name="Logradouro"
+                            placeholder="Logradouro"
+                            value={formData.Logradouro}
+                            onChange={handleChange}
+                            readOnly
+                        />
+                        <input
+                            type="password"
+                            name="Senha"
+                            placeholder="Senha"
+                            value={formData.Senha}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                </div>
                 <button type="submit">Registrar Cliente</button>
             </form>
         </div>

@@ -1,0 +1,230 @@
+/* Importação MontSerrat*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: white;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 10px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logo {
+  width: 50px;
+  height: auto;
+  margin-right: 400px;
+}
+
+.title-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+h1 {
+  font-size: 24px;
+  color: #333;
+  margin: 0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; 
+  background-image: url("../../../public/images/350z.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment:fixed;
+}
+
+.top-bar {
+  width: 100%;
+  height: 60px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+}
+
+
+.btn-login {
+  background-color: #34252568;
+  color: white;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.btn-cadastro {
+  background-color: #34252568;
+  color: white;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+/* Estilo para os formulários */
+.formulario-login {
+    background: #fff;
+    margin: auto;
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    border: 2px solid rgba(0, 0, 0, 0.432);
+    border-bottom: 5px solid #fb0103;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.537);
+}
+
+.formulario-cadastro {
+  margin: auto;
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 5px solid #fb0103;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos dos formulários */
+.formulario-login h2, .formulario-cadastro h2 {
+    text-align: left;
+    color: #333;
+    font-size: 1.0rem;
+    margin-bottom: 20px;
+}
+
+.titulo-registro {
+  color: #fb0103;
+  text-decoration-line:underline;
+}
+
+/* Estilo dos inputs */
+.formulario-login input {
+    display: block;
+    width: 100%;
+    background: #f3f3f3;
+    border: none;
+    margin: 15px 0;
+    padding: 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    outline: none;
+    font-size: 1rem;
+    color: #333;
+    border-radius: 4px;
+}
+
+/* Foco nos campos de entrada */
+.formulario-login input[type="email"]:focus, .formulario-login input[type="password"]:focus,
+.formulario-cadastro input[type="text"]:focus, .formulario-cadastro input[type="email"]:focus {
+    border-bottom: 2px solid #fb0103;
+}
+
+/* Botão de submit */
+.formulario-login button, .formulario-cadastro button {
+    width: 100%;
+    background-color: #fb0103;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+/* Efeito de hover no botão */
+.formulario-login button:hover, .formulario-cadastro button:hover {
+    background-color: #fb0103;
+}
+
+/* Estilo dos campos de erro ou mensagens */
+.error-msg {
+    color: #c0392b;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Para telas pequenas - Responsividade */
+@media (max-width: 768px) {
+    .formulario-login, .formulario-cadastro {
+        width: 90%;
+    }
+}
+
+/* Estilo para o contêiner geral dos campos */
+.input-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+
+.input-group input {
+  width: 100%;
+  background: #f3f3f3;
+  border: none;
+  margin: 10px 0;
+  padding: 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  outline: none;
+}
+
+.input-group input:focus {
+  border-bottom: 2px solid #fb0103;
+}
+
+@media (max-width: 768px) {
+  .input-group {
+      width: 100%;
+  }
+}
+
+/*ClientHome*/
+
+.home-container {
+  border: 2px solid #333;
+  border-radius: 10px;
+  padding: 12px;
+  margin: 15px;
+  width: 100%;
+  max-width: 1200px;
+  background-color: #f9f9f9;
+}
+
+.detalhes {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
